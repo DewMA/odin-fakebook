@@ -1,0 +1,11 @@
+<turbo-frame id="modal" class="modal">
+    <div class="form" data-controller="modal">
+        <h1> Add Comment </h1>
+        <%= form_with(model: @comment, url: post_comments_path(@post) , local: true) do |f| %>
+            <%= f.label :body %>
+            <%= f.text_area :body %>
+            <%= f.submit %>
+        <% end %>
+        <button class="textBtn danger" data-action="click->modal#closeModal" >cancel</button>
+    </div>
+</turbo-frame>
