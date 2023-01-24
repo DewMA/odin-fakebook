@@ -1,5 +1,5 @@
 <turbo-frame id="modal" class="modal">
-    <div class="form">
+    <div class="form" data-controller="modal">
         <h1> Create new post </h1>
         <%= form_with(model: @post, local: true) do |f| %>
             <%= f.label :title %>
@@ -8,5 +8,6 @@
             <%= f.text_area :body %>
             <%= f.submit "Post"%>
         <% end %>
+        <button class="textBtn danger" data-action="click->modal#closeModal" >Close</button>
     </div>
 </turbo-frame>
