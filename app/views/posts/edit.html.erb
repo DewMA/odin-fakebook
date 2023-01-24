@@ -1,0 +1,13 @@
+<turbo-frame id="<%= dom_id(@post)%>" class="post">
+    <div class="form">
+        <h1> Edit post </h1>
+        <%= form_with(model: @post, local: true) do |f| %>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+            <%= f.label :body %>
+            <%= f.text_area :body %>
+            <%= f.submit%>
+            <%= link_to "close", root_path%>
+        <% end %>
+    </div>
+</turbo-frame>

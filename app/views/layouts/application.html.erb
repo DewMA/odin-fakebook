@@ -15,13 +15,16 @@
       <h1> FakeBook </h1>
       <div>
         <% if user_signed_in? %>
+            <%= link_to "New", new_post_path, data: {turbo_frame: "modal", action: "advance"} %>
             <%= link_to "Sign-Out", destroy_user_session_path, data: {turbo_method: :delete}%>
         <% end %>
       </div>
     </header>
     
     <turbo-frame id="container" class="container">
-      <%= yield %>
+      <turbo-frame id="modal" class="modal"></turbo-frame>
+        <%= yield %>
     </turbo-frame>
+
   </body>
 </html>

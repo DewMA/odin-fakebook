@@ -1,0 +1,7 @@
+<div id="posts_container" class="posts_container">
+    <% @posts.each do |post|%>
+        <turbo-frame id="<%= dom_id(post)%>" class="post">
+            <%= render "post", :post => post %>
+        </turbo-frame>
+    <% end %>
+</div>
