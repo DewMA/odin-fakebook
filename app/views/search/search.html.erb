@@ -1,0 +1,7 @@
+<turbo-frame id="posts_container" class="posts_container">
+    <% @results.each do |r| %>
+        <turbo-frame id=<%= dom_id(r)%> class="post">
+            <%= render "shared/user", user: r %>
+        </turbo-frame>
+    <% end %>
+</turbo-frame>

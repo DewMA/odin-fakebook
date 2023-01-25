@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :friends
+
+  get "/search", to: "search#search", as: :search
+  post "/friends/:id", to: "friends#create", as: :friends
+
+  resources :friends, except: [ :create ]
 
   resources :likes, only: [ :destroy ]
   resources :comments, only: [ :destroy, :edit, :update ]

@@ -15,6 +15,14 @@
       <h1> FakeBook </h1>
       <div>
         <% if user_signed_in? %>
+          <%= form_with(url: search_path, local: true, method: :get, data: {turbo_frame: "container", controller: "search"}) do |f|%>
+              <%= f.text_field :search %>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <% if user_signed_in? %>
+            <%= link_to "Home", root_path %>
             <%= link_to "New", new_post_path, data: {turbo_frame: "modal", action: "advance"} %>
             <%= link_to "Sign-Out", destroy_user_session_path, data: {turbo_method: :delete}%>
         <% end %>

@@ -1,0 +1,14 @@
+<%= user.email %>
+<hr>
+<div class="options">
+    <% if !current_user.friends.include?(user) && user.id != current_user.id %>
+        <% if current_user.friend_requests.include?(user) %>
+            <%= link_to "Accept", friend_path(user), data: {turbo_method: :patch} %>
+            <%= link_to "Reject", friend_path(user), data: {turbo_method: :delete} %>
+        <% elsif current_user.sent_requests.include?(user) %>
+            <%= link_to "Cancel request", friend_path(user), data: { turbo_method: :delete } %>
+        <% else %>
+            <%= link_to "Add", friends_path(user), data: {turbo_method: :post} %>
+        <% end %>
+    <% end %>
+</div>

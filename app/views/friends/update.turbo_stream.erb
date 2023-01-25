@@ -1,0 +1,7 @@
+<turbo-stream action="replace", target=<%= dom_id(@user) %>>
+    <template>
+        <turbo-frame id=<%= dom_id(@user)%> class="post">
+            <%= render "shared/user", user: @user %>
+        </turbo-frame>
+    </template>
+</turbo-stream>
