@@ -1,0 +1,15 @@
+
+<p>comments: </p>
+<div id="post-comments" class="post-comments">
+    <% comment.each do |c| %>
+        <turbo-frame id=<%= dom_id(c) %> class="comment">
+            <p><%= c.user.email %> commented <%= time_ago_in_words( c.created_at )%> ago</p>
+            <hr>
+            <p><%= c.body%></p>
+            <% if current_user.id == c.user.id%>
+                <%= link_to "edit", edit_comment_path(c), data: {turbo_frame: "modal"}%>
+                <%= link_to "delete", comment_path(c), data: {turbo_method: :delete} %>
+            <% end %>
+        </turbo-frame>
+    <% end %>
+</div>

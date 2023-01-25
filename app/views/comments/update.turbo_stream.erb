@@ -1,0 +1,13 @@
+<turbo-stream action="replace" target=<%= dom_id(@comment) %>>
+    <template>
+        <turbo-frame id=<%= dom_id(@comment) %> class="comment">
+            <p><%= @comment.user.email %> commented <%= time_ago_in_words( @comment.created_at )%> ago</p>
+            <hr>
+            <p><%= @comment.body%></p>
+            <% if current_user.id == @comment.user.id%>
+                <%= link_to "edit", edit_comment_path(@comment), data: {turbo_frame: "modal"}%>
+                <%= link_to "delete", comment_path(@comment), data: {turbo_method: :delete} %>
+            <% end %>
+        </turbo-frame>
+    </template>
+</turbo-frame>

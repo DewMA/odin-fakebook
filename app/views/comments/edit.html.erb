@@ -1,7 +1,7 @@
 <turbo-frame id="modal" class="modal">
     <div class="form" data-controller="modal">
-        <h1> Add Comment </h1>
-        <%= form_with(model: @comment, url: post_comments_path(@post) , local: true, data: {action: "turbo:submit-end->modal#closeModal" }) do |f| %>
+        <h1> Edit Comment </h1>
+        <%= form_with(model: @comment, local: true, data: {action: "turbo:submit-end->modal#closeModal" }) do |f| %>
             <%= f.label :body %>
             <%= f.text_area :body %>
             <%= f.submit %>
