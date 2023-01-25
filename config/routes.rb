@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :comments, except: [ :edit, :update, :destroy ]
   end
   
-  devise_for :users
+  devise_for :users, :controllers => {
+    sessions: "custom/sessions"
+  }
   
   root "posts#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

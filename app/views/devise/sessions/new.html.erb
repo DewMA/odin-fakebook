@@ -1,5 +1,8 @@
 <turbo-frame id="form" class="form">
   <h1>Log in</h1>
+  
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
     <div class="field">
