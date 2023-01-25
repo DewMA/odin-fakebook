@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friends
 
   resources :likes, only: [ :destroy ]
   resources :comments, only: [ :destroy, :edit, :update ]
