@@ -1,0 +1,15 @@
+<turbo-frame id="posts_container" class="posts_container">
+    <div class="options">
+        <%= link_to "Friends", friends_index_path%>
+        <%= link_to "Friend Requests", friends_requests_path%>
+    </div>
+    <% if @friends.any? %>
+        <% @friends.each do |f| %>
+            <turbo-frame id=<%= dom_id(f) %> class="post">
+                <%= render "shared/user", user: f%>
+            </turbo-frame>
+        <% end %>
+    <% else %>
+        <h2>Empty :( </h2>
+    <% end %>
+</turbo-frame>

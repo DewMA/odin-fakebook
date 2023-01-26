@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @posts = Post.all
+        @posts = Post.get_latest
     end
 
     def new
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     private
 
     def get_params
-        params.require(:post).permit(:title, :body)
+        params.require(:post).permit(:title, :body, :image)
     end
 
 end

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get "/search", to: "search#search", as: :search
   post "/friends/:id", to: "friends#create", as: :friends
+  get "/friends", to: "friends#index", as: :friends_index
+  get "/friends/requests", to: "friends#requests", as: :friends_requests
 
   resources :friends, except: [ :create ]
 

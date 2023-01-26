@@ -6,6 +6,7 @@
             <%= f.text_field :title %>
             <%= f.label :body %>
             <%= f.text_area :body %>
+            <%= f.file_field :image %>
             <%= f.submit "Post"%>
         <% end %>
         <button class="textBtn danger" data-action="click->modal#closeModal" >Close</button>

@@ -5,6 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100] 
+  end
+
   has_many :post, dependent: :destroy
 
   has_many :like, dependent: :destroy
@@ -12,8 +16,8 @@ class User < ApplicationRecord
 
   has_many :comment, dependent: :destroy
 
-  has_many :requester, :class_name => 'Friend', :foreign_key => 'requester_id'
-  has_many :reciever, :class_name => 'Friend', :foreign_key => 'reciever_id'
+  has_many :requester, :class_name => 'Friend', :foreign_key => 'requester_id', dependent: :destroy
+  has_many :reciever, :class_name => 'Friend', :foreign_key => 'reciever_id', dependent: :destroy
 
   def friend_requests(status = 1)
     self.reciever.where("status = ?", status).collect(&:requester)

@@ -1,5 +1,7 @@
-<div id="posts_container" class="posts_container">
+<turbo-frame id="posts_container" class="posts_container">
     <% @posts.each do |post|%>
+        <% if current_user.friends.include?(post.user) || current_user == post.user %>
             <%= render "post", :post => post %>
+        <% end %>
     <% end %>
-</div>
+</turbo-frame>

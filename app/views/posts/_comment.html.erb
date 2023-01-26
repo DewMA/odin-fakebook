@@ -3,7 +3,10 @@
 <div id="post-comments" class="post-comments">
     <% comment.each do |c| %>
         <turbo-frame id=<%= dom_id(c) %> class="comment">
-            <p><%= c.user.email %> commented <%= time_ago_in_words( c.created_at )%> ago</p>
+            <div class="comment_header">
+                <%= image_tag get_avatar(c.user), width: 30, height: 30, class: "avatar"%>
+                <p><%= c.user.email %> commented <%= time_ago_in_words( c.created_at )%> ago</p>
+            </div>
             <hr>
             <p><%= c.body%></p>
             <% if current_user.id == c.user.id%>

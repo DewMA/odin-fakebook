@@ -1,5 +1,14 @@
 class FriendsController < ApplicationController
 
+    def requests
+        @friends = current_user.friend_requests
+        render :index
+    end
+
+    def index
+        @friends = current_user.friends
+    end
+
     def create
         friend = Friend.new(requester_id: current_user.id, reciever_id: params[:id], status: 1)
         friend.save

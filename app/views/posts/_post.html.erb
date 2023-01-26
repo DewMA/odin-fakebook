@@ -1,7 +1,17 @@
 <turbo-frame id="<%= dom_id(post)%>" class="post">
-    <h2><%= post.title %></h2>
+    <div class="post_header">
+        <%= image_tag get_avatar(post.user), width: 50, height: 50, class: "avatar" %>
+        <div class="details">
+            <h2><%= post.title %></h2>
+            <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>
+        </div>
+    </div>
     <hr>
     <p><%= post.body %></p>
+    <% if post.image.attached? %>
+        <hr>
+        <%= image_tag post.image, class: "post_image" %>
+    <% end %>
     <hr>
     <div class="options">
 

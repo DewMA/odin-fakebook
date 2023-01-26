@@ -41,6 +41,13 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .navMenu{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
 }
 
 .posts_container{
@@ -60,6 +67,11 @@ header{
     padding: 1rem;
     background-color: white;
     border-radius: 5px;
+
+    .post_header{
+        display: flex;
+        gap: 1rem;
+    }
 
     .options{
         .active{
@@ -93,6 +105,13 @@ header{
             padding: 1ch;
             box-sizing: border-box;
             background-color: white;
+
+            .comment_header{
+                display: flex;
+                gap: 5px;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }
 
@@ -191,4 +210,13 @@ header{
 
 .notice{
     color: yellow;
+}
+
+.post_image{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.avatar{
+    border-radius: 50%;
 }
