@@ -1,7 +1,14 @@
 <turbo-stream action="replace" target=<%= dom_id(@comment) %>>
     <template>
         <turbo-frame id=<%= dom_id(@comment) %> class="comment">
-            <p><%= @comment.user.email %> commented <%= time_ago_in_words( @comment.created_at )%> ago</p>
+            <div class="comment_header">
+                <%= image_tag get_avatar(@comment.user), width: 30, height: 30, class: "avatar"%>
+                <p><%= @comment.user.username %> commented <%= time_ago_in_words( @comment.created_at )%> ago
+                <% if @comment.created_at != @comment.updated_at%>
+                    (edited <%= time_ago_in_words(@comment.updated_at) %> ago)
+                <% end %>
+                </p>
+            </div>
             <hr>
             <p><%= @comment.body%></p>
             <% if current_user.id == @comment.user.id%>

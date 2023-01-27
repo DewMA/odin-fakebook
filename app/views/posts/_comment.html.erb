@@ -1,11 +1,15 @@
 
 <p>comments: </p>
-<div id="post-comments" class="post-comments">
-    <% comment.each do |c| %>
+<div id=<%= dom_id(post)+"_comments" %> class="post-comments">
+    <% comments.order("created_at desc").each do |c| %>
         <turbo-frame id=<%= dom_id(c) %> class="comment">
             <div class="comment_header">
                 <%= image_tag get_avatar(c.user), width: 30, height: 30, class: "avatar"%>
-                <p><%= c.user.email %> commented <%= time_ago_in_words( c.created_at )%> ago</p>
+                <p><%= c.user.username %> commented <%= time_ago_in_words( c.created_at )%> ago
+                <% if c.created_at != c.updated_at%>
+                    (edited <%= time_ago_in_words(c.updated_at) %> ago)
+                <% end %>
+                </p>
             </div>
             <hr>
             <p><%= c.body%></p>

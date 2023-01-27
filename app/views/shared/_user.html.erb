@@ -1,4 +1,7 @@
-<%= user.email %>
+<div class="post_header">
+    <%= image_tag get_avatar(user), width: 30, height: 30, class: "avatar" %>
+    <%= user.username %>
+</div>
 <hr>
 <div class="options">
     <% if !current_user.friends.include?(user) && user.id != current_user.id %>

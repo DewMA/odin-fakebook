@@ -2,9 +2,7 @@
     <div class="form" data-controller="modal">
         <h1> Create new post </h1>
         <%= form_with(model: @post, local: true) do |f| %>
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-            <%= f.label :body %>
+            <%= f.label :description %>
             <%= f.text_area :body %>
             <%= f.file_field :image %>
             <%= f.submit "Post"%>

@@ -2,7 +2,7 @@
     <div class="post_header">
         <%= image_tag get_avatar(post.user), width: 50, height: 50, class: "avatar" %>
         <div class="details">
-            <h2><%= post.title %></h2>
+            <h3><%= post.user.username%></h3>
             <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>
         </div>
     </div>
@@ -28,5 +28,5 @@
         <%end%>
 
     </div>
-    <%= render "comment", comment: post.comment %>
+    <%= render "comment", comments: post.comment, post: post %>
 </turbo-frame>

@@ -1,7 +1,10 @@
-<turbo-stream action="prepend", target="post-comments">
+<turbo-stream action="prepend", target=<%= dom_id(@comment.post)+"_comments"%>>
     <template>
         <turbo-frame id=<%= dom_id(@comment) %> class="comment">
-            <p><%= @comment.user.email %> commented <%= time_ago_in_words( @comment.created_at )%> ago</p>
+            <div class="comment_header">
+                <%= image_tag get_avatar(@comment.user), width: 30, height: 30, class: "avatar"%>
+                <p><%= @comment.user.username %> commented <%= time_ago_in_words( @comment.created_at )%> ago</p>
+            </div>
             <hr>
             <p><%= @comment.body%></p>
             <% if current_user.id == @comment.user.id%>
