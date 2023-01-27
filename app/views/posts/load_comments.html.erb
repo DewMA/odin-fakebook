@@ -1,8 +1,6 @@
+<turbo-frame id=<%= dom_id(@post)+"_comments" %> class="post-comments">
 
-<p>comments: </p>
-<turbo-frame id=<%= dom_id(post)+"_comments" %> class="post-comments">
-
-    <% comments.order("created_at desc").limit(@limit).each do |c| %>
+    <% @post.comment.order("created_at desc").limit(@limit).each do |c| %>
         <turbo-frame id=<%= dom_id(c) %> class="comment">
             <div class="comment_header">
                 <%= image_tag get_avatar(c.user), width: 30, height: 30, class: "avatar"%>
@@ -21,7 +19,7 @@
         </turbo-frame>
     <% end %>
 
-    <% if @limit < post.comment.size %>
+    <% if @limit < @post.comment.size %>
         <%= link_to "Load Comments", load_comments_path(post) %>
     <% end %>
 

@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
 
+    def load_comments
+        @post = Post.find(params[:post_id])
+        @limit = @post.comment.size
+    end
+
     def index
         @pagy, @posts = pagy(Post.get_latest, items: 1)
+        @limit = 2
     end
 
     def new

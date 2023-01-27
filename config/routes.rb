@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "/posts/:post_id/load_comments", to: "posts#load_comments", as: :load_comments
+
   get "/search", to: "search#search", as: :search
   post "/friends/:id", to: "friends#create", as: :friends
   get "/friends", to: "friends#index", as: :friends_index
