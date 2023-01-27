@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
     def index
         @pagy, @posts = pagy(Post.get_latest, items: 1)
-        @limit = 2
+        @limit = '2'
     end
 
     def new
