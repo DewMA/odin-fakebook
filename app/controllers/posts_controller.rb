@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @posts = Post.get_latest
+        @pagy, @posts = pagy(Post.get_latest, items: 1)
     end
 
     def new

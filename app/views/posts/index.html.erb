@@ -1,7 +1,14 @@
 <turbo-frame id="posts_container" class="posts_container">
-    <% @posts.each do |post|%>
-        <% if current_user.friends.include?(post.user) || current_user == post.user %>
-            <%= render "post", :post => post %>
+        <%= turbo_frame_tag "post_page_#{@pagy.page}", class: "pagy_page" do %>
+            <% @posts.each do |post|%>
+                <% if current_user.friends.include?(post.user) || current_user == post.user %>
+                    <%= render "post", :post => post %>
+                <% end %>
+            <% end %>
+            <% if @pagy.next %>
+                <%= turbo_frame_tag "post_page_#{@pagy.next}", class: "pagy_page", src: posts_path(page: @pagy.next), loading: :lazy do %>
+                    <h1>Loading...</h1>
+                <% end %>
+            <% end %>
         <% end %>
-    <% end %>
 </turbo-frame>
