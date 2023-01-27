@@ -33,4 +33,12 @@ class User < ApplicationRecord
     self.friend_requests(0) + self.sent_requests(0)
   end
 
+  after_create :send_mail
+
+  private
+
+  def send_mail
+    UserMailer.with(user: self).welcome_email.deliver_later
+  end
+
 end
